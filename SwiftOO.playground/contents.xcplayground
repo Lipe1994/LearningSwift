@@ -4,5 +4,12 @@
         <page name='Structs'/>
         <page name='Classes'/>
         <page name='Heranca'/>
+        <page name='Polimorfismo'/>
+        <page name='Parametros'/>
+        <page name='Observadores'/>
+        <page name='Extencoes'/>
+        <page name='Protocolos'/>
+        <page name='Enumeradores'/>
+        <page name='RawValues'/>
     </pages>
 </playground>

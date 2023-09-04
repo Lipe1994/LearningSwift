@@ -19,18 +19,6 @@ class Conta{
 }
 
 class ContaPoupanca: Conta{
-    var possuiCartaoDebio: Bool;
-    func solicitarCartaoDebito()
-    {
-        print("O cliente está solicitando cartão débito.");
-        self.possuiCartaoDebio = true;
-    }
-    
-    override init(nome: String)
-    {
-        self.possuiCartaoDebio = false;
-        super.init(nome: nome);
-    }
 }
 
 class ContaCorrente: Conta{
@@ -43,8 +31,27 @@ class ContaCorrente: Conta{
 
 let contaPoupanca = ContaPoupanca(nome: "Filipe CP");
 contaPoupanca.depositar(100);
-contaPoupanca.solicitarCartaoDebito();
 
 let contaCorrente = ContaCorrente(nome: "Filipe CC");
 contaCorrente.depositar(500);
-contaCorrente.solicitarEmprestimo(20_000);
+ 
+//Embora a funcao abaixo receba uma instancia do tipo conta, eu poderia passar também qualquer outro tipo que tenha heranca do tipo Conta(ContaPoupanca e ContaCorrente)
+//essa caracteristica é chamada de polimorfismo
+func exibeSaldoDaConta(_ conta: Conta)
+{
+    print(conta.saldo);
+    
+    //É possível usar guradas do swift para checagem de tipos
+    guard let contaCorrente2 = conta as? ContaCorrente else{
+        return;
+    }
+    
+    contaCorrente2.solicitarEmprestimo(1_000);
+    
+}
+
+exibeSaldoDaConta(contaPoupanca);
+exibeSaldoDaConta(contaCorrente);
+
+
+
